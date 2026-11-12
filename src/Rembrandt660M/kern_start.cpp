@@ -730,7 +730,7 @@ void ensureVbiosProperty(IOService *provider) {
 		uint32_t ssv = propU32(provider, "subsystem-vendor-id") & 0xFFFF, ssid = propU32(provider, "subsystem-id") & 0xFFFF;
 		uint32_t rev = propU32(provider, "revision-id") & 0xFF;
 		size_t embLen = static_cast<size_t>(rmb_vbios_aug_end - rmb_vbios_aug);
-		bool idOk = lenovoPci(provider) && ssv == 0x17AA && ssid == 0x3B1E && rev == 0x03;
+		bool idOk = lenovoPci(provider) && ssv == 0x17AA && ssid == 0x50B4 && rev == 0xD2;
 		bool embOk = embLen == rmbvbios::kOutLen && rmbvbios::fnv1a64(rmb_vbios_aug, embLen) == rmbvbios::kOutFnv;
 		IOLog("REM660: [vbios] embedded fallback: subsys %04x:%04x rev %02x idOk=%d len=0x%zx fnvOk=%d\n", ssv, ssid, rev,
 		      idOk ? 1 : 0, embLen, embOk ? 1 : 0);

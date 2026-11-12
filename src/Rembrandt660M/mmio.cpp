@@ -21,8 +21,8 @@ static uint32_t dataU32(IORegistryEntry *e, const char *key) {
 static bool lenovoGpu(IORegistryEntry *svc) {
 	auto devId = dataU32(svc, "device-id");
 	return dataU32(svc, "vendor-id") == 0x1002 && (dataU32(svc, "class-code") >> 16) == 0x03 &&
-	       (devId == 0x1681 || devId == 0x73ff) && dataU32(svc, "revision-id") == 3 &&
-	       dataU32(svc, "subsystem-vendor-id") == 0x17aa && dataU32(svc, "subsystem-id") == 0x3b1e;
+	       (devId == 0x1681 || devId == 0x73ff) && dataU32(svc, "revision-id") == 0xd2 &&
+	       dataU32(svc, "subsystem-vendor-id") == 0x17aa && dataU32(svc, "subsystem-id") == 0x50b4;
 }
 
 static bool mapFrom(IOService *svc, const char *how) {
@@ -127,7 +127,7 @@ static bool findVram() {
 		return false;
 	while (auto svc = OSDynamicCast(IOService, iter->getNextObject())) {
 		auto devId = dataU32(svc, "device-id");
-		if (dataU32(svc, "vendor-id") != 0x1002 || (dataU32(svc, "class-code") >> 16) != 0x03 || (devId != 0x1681 && devId != 0x73ff) || dataU32(svc,"revision-id") != 3 || dataU32(svc,"subsystem-vendor-id") != 0x17aa || dataU32(svc,"subsystem-id") != 0x3b1e)
+		if (dataU32(svc, "vendor-id") != 0x1002 || (dataU32(svc, "class-code") >> 16) != 0x03 || (devId != 0x1681 && devId != 0x73ff) || dataU32(svc,"revision-id") != 0xd2 || dataU32(svc,"subsystem-vendor-id") != 0x17aa || dataU32(svc,"subsystem-id") != 0x50b4)
 			continue;
 		for (unsigned i = 0; i < svc->getDeviceMemoryCount(); i++) {
 			auto mem = svc->getDeviceMemoryWithIndex(i);

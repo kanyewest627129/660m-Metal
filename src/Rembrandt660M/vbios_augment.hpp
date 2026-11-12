@@ -17,9 +17,9 @@ namespace rmbvbios {
 
 constexpr size_t kRawLen = 0xAE00;
 constexpr size_t kOutLen = 0xB600;
-constexpr uint64_t kRawFnv = 0x45263ce37d8098a3ULL;  // lenovo_660m_vfct_vbios.rom
-constexpr uint64_t kOutFnv = 0x87fb54269c20b5e1ULL;  // lenovo_660m-73ff-aug.rom
-constexpr uint32_t kVramMb = 2048, kBusWidth = 128;  // linux_amdgpu_dmesg.txt: "VRAM: 2048M", "RAM width 128bits"
+constexpr uint64_t kRawFnv = 0xc8a32807fa9027bdULL;  // lenovo_660m_vfct_vbios.rom
+constexpr uint64_t kOutFnv = 0x0412789dbbce58f3ULL;  // lenovo_660m-73ff-aug.rom
+constexpr uint32_t kVramMb = 1024, kBusWidth = 128;  // linux_amdgpu_dmesg.txt: "VRAM: 2048M", "RAM width 128bits"
 constexpr uint8_t kGddr6Marker = 0x70;               // compatibility marker only, NOT a hardware claim
 
 inline uint64_t fnv1a64(const uint8_t *p, size_t n) {
